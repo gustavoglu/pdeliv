@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjectDeliv.Infra.Data.Contexts;
 
@@ -10,27 +11,13 @@ using ProjectDeliv.Infra.Data.Contexts;
 namespace ProjectDeliv.Infra.Data.Migrations
 {
     [DbContext(typeof(ContextSQL))]
-    partial class ContextSQLModelSnapshot : ModelSnapshot
+    [Migration("20211123140325_produto_grupo_config")]
+    partial class produto_grupo_config
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.0");
-
-            modelBuilder.Entity("ProdutoGrupoConfigProdutoGrupoConfigOpcao", b =>
-                {
-                    b.Property<Guid>("ProdutoGrupoConfigOpcoesId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("ProdutoGrupoConfigsId")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("ProdutoGrupoConfigOpcoesId", "ProdutoGrupoConfigsId");
-
-                    b.HasIndex("ProdutoGrupoConfigsId");
-
-                    b.ToTable("ProdutoGrupoConfigProdutoGrupoConfigOpcao");
-                });
 
             modelBuilder.Entity("ProjectDeliv.Domain.Entidades.ProdutoGrupo", b =>
                 {
@@ -113,64 +100,6 @@ namespace ProjectDeliv.Infra.Data.Migrations
                     b.HasIndex("ProdutoGrupoId");
 
                     b.ToTable("ProdutoGrupoConfig");
-                });
-
-            modelBuilder.Entity("ProjectDeliv.Domain.Entidades.ProdutoGrupoConfigOpcao", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime?>("AtualizadoEm")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("AtualizadoPor")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("Codigo")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("Deletado")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime?>("DeletadoEm")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("DeletadoPor")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Descricao")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime?>("InseridoEm")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("InseridoPor")
-                        .HasColumnType("TEXT");
-
-                    b.Property<double>("Preco")
-                        .HasColumnType("REAL");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ProdutoGrupoConfigOpcao");
-                });
-
-            modelBuilder.Entity("ProdutoGrupoConfigProdutoGrupoConfigOpcao", b =>
-                {
-                    b.HasOne("ProjectDeliv.Domain.Entidades.ProdutoGrupoConfigOpcao", null)
-                        .WithMany()
-                        .HasForeignKey("ProdutoGrupoConfigOpcoesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ProjectDeliv.Domain.Entidades.ProdutoGrupoConfig", null)
-                        .WithMany()
-                        .HasForeignKey("ProdutoGrupoConfigsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("ProjectDeliv.Domain.Entidades.ProdutoGrupoConfig", b =>

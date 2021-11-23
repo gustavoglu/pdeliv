@@ -7,13 +7,17 @@ namespace ProjectDeliv.Infra.Data.Contexts
     public class ContextSQL : DbContext
     {
         public DbSet<ProdutoGrupo> ProdutoGrupo { get; set; }
+        public DbSet<ProdutoGrupoConfig> ProdutoGrupoConfig { get; set; }
+        public DbSet<ProdutoGrupoConfigOpcao> ProdutoGrupoConfigOpcao { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            
+
             modelBuilder.ApplyConfiguration(new ProdutoGrupoMap());
+            modelBuilder.ApplyConfiguration(new ProdutoGrupoConfigMap());
+            modelBuilder.ApplyConfiguration(new ProdutoGrupoConfigOpcaoMap());
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

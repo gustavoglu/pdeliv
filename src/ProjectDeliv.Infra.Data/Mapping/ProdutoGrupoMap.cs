@@ -17,6 +17,9 @@ namespace ProjectDeliv.Infra.Data.Mapping
             builder.Property(produtoGrupo => produtoGrupo.ImagemUrl)
                 .HasMaxLength(250)
                 .IsRequired(false);
+
+            builder.Property(produtoGrupo => produtoGrupo.Configuracoes).IsRequired(false);
+
         }
     }
 }
