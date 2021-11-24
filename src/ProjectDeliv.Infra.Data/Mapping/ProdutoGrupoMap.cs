@@ -18,8 +18,6 @@ namespace ProjectDeliv.Infra.Data.Mapping
                 .HasMaxLength(250)
                 .IsRequired(false);
 
-            builder.Property(produtoGrupo => produtoGrupo.Configuracoes).IsRequired(false);
-
         }
     }
 }

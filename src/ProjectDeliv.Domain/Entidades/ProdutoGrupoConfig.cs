@@ -8,7 +8,7 @@
 
         }
 
-        public ProdutoGrupoConfig(string descricao, List<ProdutoGrupoConfigOpcao> opcoes = null)
+        public ProdutoGrupoConfig(string descricao, List<ProdutoGrupoConfigOpcao>? opcoes = null)
         {
             Descricao = descricao;
             ProdutoGrupoConfigOpcoes = opcoes ?? new List<ProdutoGrupoConfigOpcao>();
@@ -18,8 +18,8 @@
 
 
         public Guid ProdutoGrupoId { get; set; }
-        public ProdutoGrupo ProdutoGrupo { get; set; }
+        public ProdutoGrupo? ProdutoGrupo { get; set; }
 
-        public List<ProdutoGrupoConfigOpcao> ProdutoGrupoConfigOpcoes { get; set; }
+        public List<ProdutoGrupoConfigOpcao>? ProdutoGrupoConfigOpcoes { get; set; }
     }
 }

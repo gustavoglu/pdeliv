@@ -4,7 +4,7 @@
     {
         public ProdutoGrupo(){}
 
-        public ProdutoGrupo(string descricao, string imagemUrl = null, List<ProdutoGrupoConfig> configuracoes = null)
+        public ProdutoGrupo(string descricao, string? imagemUrl = null, List<ProdutoGrupoConfig>? configuracoes = null)
         {
             Descricao = descricao;
             ImagemUrl = imagemUrl;
@@ -15,6 +15,6 @@
         public string? ImagemUrl { get; set; }
 
 
-        public List<ProdutoGrupoConfig> Configuracoes  { get; set; }
+        public List<ProdutoGrupoConfig>? Configuracoes  { get; set; }
     }
 }

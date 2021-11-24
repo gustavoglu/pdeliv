@@ -17,7 +17,7 @@
         public string Descricao { get; set; }
         public double Preco { get; set; }
 
-        public List<ProdutoGrupoConfig> ProdutoGrupoConfigs { get; set; }
+        public List<ProdutoGrupoConfig>? ProdutoGrupoConfigs { get; set; }
 
 
     }

@@ -15,39 +15,34 @@ namespace ProjectDeliv.Infra.Data.Repositorios
             _context = context;
             DbSet = _context.Set<TEntidade>();
         }
-        public void Deletar(Guid id)
+        public virtual void Deletar(Guid id)
         {
             var entidade = this.ObterPorId(id);
-            entidade.Deletado = true;
-            entidade.DeletadoEm = DateTime.Now;
-
-            Atualizar(id, entidade);
+            _context.Remove(entidade);
         }
 
-        public void Inserir(TEntidade entidade)
+        public virtual void Inserir(TEntidade entidade)
         {
-            entidade.InseridoEm = DateTime.Now;
             DbSet.Add(entidade);
         }
 
-        public TEntidade ObterPorId(Guid id)
+        public virtual TEntidade ObterPorId(Guid id)
         {
             return DbSet.Find(id);
         }
 
-        public List<TEntidade> ObterTodos()
+        public virtual List<TEntidade> ObterTodos()
         {
             return DbSet.ToList();
         }
 
-        public List<TEntidade> Pesquisar(Expression<Func<TEntidade, bool>> expression)
+        public virtual List<TEntidade> Pesquisar(Expression<Func<TEntidade, bool>> expression)
         {
             return DbSet.Where(expression).ToList();
         }
 
-        public void Atualizar(Guid id, TEntidade entidade)
+        public virtual void Atualizar(Guid id, TEntidade entidade)
         {
-            entidade.AtualizadoEm = DateTime.Now;
             DbSet.Update(entidade);
         }
     }

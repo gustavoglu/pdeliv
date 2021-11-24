@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using ProjectDeliv.Domain.Entidades;
 using ProjectDeliv.Infra.Data.Mapping;
+using System.Linq;
 
 namespace ProjectDeliv.Infra.Data.Contexts
 {
@@ -9,6 +11,64 @@ namespace ProjectDeliv.Infra.Data.Contexts
         public DbSet<ProdutoGrupo> ProdutoGrupo { get; set; }
         public DbSet<ProdutoGrupoConfig> ProdutoGrupoConfig { get; set; }
         public DbSet<ProdutoGrupoConfigOpcao> ProdutoGrupoConfigOpcao { get; set; }
+
+
+        public override int SaveChanges()
+        {
+            var entryEntidades = this.ChangeTracker.Entries().Where(entry => entry.Entity is EntidadeBase).ToList();
+
+            var insercoes = entryEntidades.Where(entityEntry => entityEntry.State == EntityState.Added).ToList();
+            var atualizacoes = entryEntidades.Where(entityEntry => entityEntry.State == EntityState.Modified).ToList();
+            var delecoes = entryEntidades.Where(entityEntry => entityEntry.State == EntityState.Deleted).ToList();
+
+            AdicionarCamposEmInsercoes(insercoes);
+            AdicionarCamposEmAtualizacoes(atualizacoes);
+            AdicionarCamposEmDelecoes(delecoes);
+
+            return base.SaveChanges();
+        }
+
+        private void AdicionarCamposEmInsercoes(List<EntityEntry> insersoes)
+        {
+            if (!insersoes.Any()) return;
+
+
+            foreach (var entityEntry in insersoes)
+            {
+                var entidade = entityEntry.Entity as EntidadeBase;
+                entidade.InseridoEm = DateTime.Now;
+            }
+        }
+
+
+        private void AdicionarCamposEmAtualizacoes(List<EntityEntry> atualizacoes)
+        {
+            if (!atualizacoes.Any()) return;
+
+
+            foreach (var entityEntry in atualizacoes)
+            {
+                var entidade = entityEntry.Entity as EntidadeBase;
+                entidade.AtualizadoEm = DateTime.Now;
+            }
+        }
+
+
+
+        private void AdicionarCamposEmDelecoes(List<EntityEntry> delecoes)
+        {
+            if (!delecoes.Any()) return;
+
+
+            foreach (var entityEntry in delecoes)
+            {
+                var entidade = entityEntry.Entity as EntidadeBase;
+                entidade.DeletadoEm = DateTime.Now;
+                entidade.Deletado = true;
+                entityEntry.State = EntityState.Modified;
+            }
+        }
+
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
