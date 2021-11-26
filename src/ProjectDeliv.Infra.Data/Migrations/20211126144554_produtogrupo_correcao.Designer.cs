@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjectDeliv.Infra.Data.Contexts;
 
@@ -10,9 +11,10 @@ using ProjectDeliv.Infra.Data.Contexts;
 namespace ProjectDeliv.Infra.Data.Migrations
 {
     [DbContext(typeof(ContextSQL))]
-    partial class ContextSQLModelSnapshot : ModelSnapshot
+    [Migration("20211126144554_produtogrupo_correcao")]
+    partial class produtogrupo_correcao
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.0");
@@ -30,47 +32,6 @@ namespace ProjectDeliv.Infra.Data.Migrations
                     b.HasIndex("ProdutoGrupoConfigsId");
 
                     b.ToTable("ProdutoGrupoConfigProdutoGrupoConfigOpcao");
-                });
-
-            modelBuilder.Entity("ProjectDeliv.Domain.Entidades.ProdutoClass", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime?>("AtualizadoEm")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("AtualizadoPor")
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("Deletado")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime?>("DeletadoEm")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("DeletadoPor")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Descricao")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("ImagemUrl")
-                        .HasMaxLength(500)
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime?>("InseridoEm")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("InseridoPor")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ProdutoClass");
                 });
 
             modelBuilder.Entity("ProjectDeliv.Domain.Entidades.ProdutoGrupo", b =>
@@ -105,12 +66,7 @@ namespace ProjectDeliv.Infra.Data.Migrations
                     b.Property<string>("InseridoPor")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid>("ProdutoClassId")
-                        .HasColumnType("TEXT");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("ProdutoClassId");
 
                     b.ToTable("ProdutoGrupo");
                 });
@@ -215,17 +171,6 @@ namespace ProjectDeliv.Infra.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("ProjectDeliv.Domain.Entidades.ProdutoGrupo", b =>
-                {
-                    b.HasOne("ProjectDeliv.Domain.Entidades.ProdutoClass", "ProdutoClass")
-                        .WithMany("Grupos")
-                        .HasForeignKey("ProdutoClassId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("ProdutoClass");
-                });
-
             modelBuilder.Entity("ProjectDeliv.Domain.Entidades.ProdutoGrupoConfig", b =>
                 {
                     b.HasOne("ProjectDeliv.Domain.Entidades.ProdutoGrupo", "ProdutoGrupo")
@@ -235,11 +180,6 @@ namespace ProjectDeliv.Infra.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("ProdutoGrupo");
-                });
-
-            modelBuilder.Entity("ProjectDeliv.Domain.Entidades.ProdutoClass", b =>
-                {
-                    b.Navigation("Grupos");
                 });
 
             modelBuilder.Entity("ProjectDeliv.Domain.Entidades.ProdutoGrupo", b =>

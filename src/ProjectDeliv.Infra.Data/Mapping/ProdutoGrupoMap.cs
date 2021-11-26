@@ -10,14 +10,14 @@ namespace ProjectDeliv.Infra.Data.Mapping
         {
             builder.HasQueryFilter(produtoGrupo => produtoGrupo.Deletado == false);
 
+            builder.HasOne(produtoGrupo => produtoGrupo.ProdutoClass)
+                .WithMany(produtoClass => produtoClass.Grupos)
+                .HasForeignKey(produtoGrupo => produtoGrupo.ProdutoClassId)
+                .OnDelete(DeleteBehavior.Restrict);
+
             builder.Property(produtoGrupo => produtoGrupo.Descricao)
                 .HasMaxLength(100)
                 .IsRequired();
-
-            builder.Property(produtoGrupo => produtoGrupo.ImagemUrl)
-                .HasMaxLength(250)
-                .IsRequired(false);
-
         }
     }
 }

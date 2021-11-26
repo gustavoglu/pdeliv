@@ -14,6 +14,7 @@ namespace ProjectDeliv.Infra.Data.Repositorios
         public override List<ProdutoGrupo> ObterTodos()
         {
             return this.DbSet.Include(produtoGrupo => produtoGrupo.Configuracoes)
+                .Include(produtoGrupo => produtoGrupo.ProdutoClass)
                 .ToList();
         }
     }

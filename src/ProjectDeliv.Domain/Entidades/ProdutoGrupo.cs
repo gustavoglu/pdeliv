@@ -4,16 +4,18 @@
     {
         public ProdutoGrupo(){}
 
-        public ProdutoGrupo(string descricao, string? imagemUrl = null, List<ProdutoGrupoConfig>? configuracoes = null)
+        public ProdutoGrupo(string descricao,Guid produtoClassId, List<ProdutoGrupoConfig>? configuracoes = null)
         {
             Descricao = descricao;
-            ImagemUrl = imagemUrl;
+            ProdutoClassId = produtoClassId;
             Configuracoes = configuracoes ?? new List<ProdutoGrupoConfig>();
         }
 
         public string Descricao { get; set; }
-        public string? ImagemUrl { get; set; }
 
+
+        public Guid ProdutoClassId { get; set; }
+        public ProdutoClass? ProdutoClass { get; set; }
 
         public List<ProdutoGrupoConfig>? Configuracoes  { get; set; }
     }

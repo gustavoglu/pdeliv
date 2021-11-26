@@ -11,6 +11,24 @@ namespace ProjectDeliv.Infra.Data.Contexts
         public DbSet<ProdutoGrupo> ProdutoGrupo { get; set; }
         public DbSet<ProdutoGrupoConfig> ProdutoGrupoConfig { get; set; }
         public DbSet<ProdutoGrupoConfigOpcao> ProdutoGrupoConfigOpcao { get; set; }
+        public DbSet<ProdutoClass> ProdutoClass { get; set; }
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.ApplyConfiguration(new ProdutoGrupoMap());
+            modelBuilder.ApplyConfiguration(new ProdutoGrupoConfigMap());
+            modelBuilder.ApplyConfiguration(new ProdutoGrupoConfigOpcaoMap());
+            modelBuilder.ApplyConfiguration(new ProdutoClassMap());
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlite("Data Source=project_deliv.db;");
+            base.OnConfiguring(optionsBuilder);
+        }
 
 
         public override int SaveChanges()
@@ -40,7 +58,6 @@ namespace ProjectDeliv.Infra.Data.Contexts
             }
         }
 
-
         private void AdicionarCamposEmAtualizacoes(List<EntityEntry> atualizacoes)
         {
             if (!atualizacoes.Any()) return;
@@ -52,8 +69,6 @@ namespace ProjectDeliv.Infra.Data.Contexts
                 entidade.AtualizadoEm = DateTime.Now;
             }
         }
-
-
 
         private void AdicionarCamposEmDelecoes(List<EntityEntry> delecoes)
         {
@@ -69,21 +84,5 @@ namespace ProjectDeliv.Infra.Data.Contexts
             }
         }
 
-
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-
-            modelBuilder.ApplyConfiguration(new ProdutoGrupoMap());
-            modelBuilder.ApplyConfiguration(new ProdutoGrupoConfigMap());
-            modelBuilder.ApplyConfiguration(new ProdutoGrupoConfigOpcaoMap());
-        }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlite("Data Source=project_deliv.db;");
-            base.OnConfiguring(optionsBuilder);
-        }
     }
 }
