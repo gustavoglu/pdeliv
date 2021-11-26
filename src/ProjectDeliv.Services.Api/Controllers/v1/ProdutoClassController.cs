@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using ProjectDeliv.Domain.Entidades;
 using ProjectDeliv.Domain.Interfaces;
+using ProjectDeliv.Domain.Notifications;
 using ProjectDeliv.Infra.Data.Contexts;
 
 namespace ProjectDeliv.Services.Api.Controllers.v1
@@ -10,11 +12,15 @@ namespace ProjectDeliv.Services.Api.Controllers.v1
     public class ProdutoClassController : ControllerBase
     {
         private readonly IProdutoClassRepositorio _repositorio;
+        private readonly IMediator _mediator;
         private readonly ContextSQL _context;
-        public ProdutoClassController(IProdutoClassRepositorio repositorio, ContextSQL context)
+        private readonly DomainNotificationHandler _notifications;
+        public ProdutoClassController(IProdutoClassRepositorio repositorio, ContextSQL context, IMediator mediator, INotificationHandler<DomainNotification> notifications)
         {
             _repositorio = repositorio;
             _context = context;
+            _mediator = mediator;
+            _notifications = (DomainNotificationHandler)notifications;
         }
 
         [HttpGet]
