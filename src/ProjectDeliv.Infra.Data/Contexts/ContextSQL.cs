@@ -65,6 +65,12 @@ namespace ProjectDeliv.Infra.Data.Contexts
 
             foreach (var entityEntry in atualizacoes)
             {
+                entityEntry.Property("InseridoEm").IsModified = false;
+                entityEntry.Property("InseridoPor").IsModified = false;
+
+                entityEntry.Property("DeletadoEm").IsModified = false;
+                entityEntry.Property("DeletadoPor").IsModified = false;
+
                 var entidade = entityEntry.Entity as EntidadeBase;
                 entidade.AtualizadoEm = DateTime.Now;
             }
@@ -77,6 +83,12 @@ namespace ProjectDeliv.Infra.Data.Contexts
 
             foreach (var entityEntry in delecoes)
             {
+                entityEntry.Property("AtualizadoEm").IsModified = false;
+                entityEntry.Property("AtualizadoPor").IsModified = false;
+
+                entityEntry.Property("InseridoEm").IsModified = false;
+                entityEntry.Property("InseridoPor").IsModified = false;
+
                 var entidade = entityEntry.Entity as EntidadeBase;
                 entidade.DeletadoEm = DateTime.Now;
                 entidade.Deletado = true;

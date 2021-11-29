@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using AutoMapper;
+using MediatR;
 using ProjectDeliv.Domain.Commands.ProdutoClasss;
 using ProjectDeliv.Domain.Entidades;
 using ProjectDeliv.Domain.Interfaces;
@@ -10,7 +11,8 @@ namespace ProjectDeliv.Domain.CommandHandlers
     {
         private readonly IProdutoClassRepositorio _repositorio;
 
-        public ProdutoClassCommandHandler(INotificationHandler<DomainNotification> notifications, IMediator mediator, IUnitOfWork uow, IProdutoClassRepositorio repositorio) : base(notifications, mediator, uow)
+        public ProdutoClassCommandHandler(INotificationHandler<DomainNotification> notifications, IMediator mediator, 
+            IUnitOfWork uow, IProdutoClassRepositorio repositorio,IMapper mapper) : base(notifications, mediator, uow, mapper)
         {
             _repositorio = repositorio;
         }
@@ -19,7 +21,7 @@ namespace ProjectDeliv.Domain.CommandHandlers
         {
             if (!CommandIsValid(request)) return Unit.Task;
 
-            var entidade = new ProdutoClass(request.Descricao, request.ImagemUrl);
+            var entidade = Mapper.Map<ProdutoClass>(request);
             _repositorio.Inserir(entidade);
             Commit();
             return Unit.Task;
@@ -29,7 +31,7 @@ namespace ProjectDeliv.Domain.CommandHandlers
         {
             if (!CommandIsValid(request)) return Unit.Task;
 
-            var entidade = new ProdutoClass(request.Descricao, request.ImagemUrl) { Id = request.Id };
+            var entidade = Mapper.Map<ProdutoClass>(request);
             _repositorio.Atualizar(entidade.Id, entidade);
             Commit();
             return Unit.Task;

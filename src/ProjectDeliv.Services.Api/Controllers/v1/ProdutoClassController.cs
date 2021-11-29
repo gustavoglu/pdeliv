@@ -37,7 +37,7 @@ namespace ProjectDeliv.Services.Api.Controllers.v1
         }
 
         [HttpPut]
-        public IActionResult Inserir(Guid id, [FromBody] ProdutoClassInsercaoCommand command)
+        public IActionResult Inserir(Guid id, [FromBody] ProdutoClassAtualizacaoCommand command)
         {
             Mediator.Send(command);
             return ResponseDefault();

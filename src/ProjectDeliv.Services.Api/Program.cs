@@ -2,6 +2,7 @@ using MediatR;
 using ProjectDeliv.Domain.CommandHandlers;
 using ProjectDeliv.Domain.Commands.ProdutoClasss;
 using ProjectDeliv.Domain.Interfaces;
+using ProjectDeliv.Domain.MapProfiles;
 using ProjectDeliv.Domain.Notifications;
 using ProjectDeliv.Infra.Data.Contexts;
 using ProjectDeliv.Infra.Data.Repositorios;
@@ -19,11 +20,17 @@ builder.Services.AddControllers().AddNewtonsoftJson(
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// DOMAIN 
+builder.Services.AddAutoMapper(typeof(CommandParaEntidade));
+
+
+// INFRA
 builder.Services.AddDbContext<ContextSQL>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IProdutoGrupoRepositorio, ProdutoGrupoRepositorio>();
 builder.Services.AddScoped<IProdutoClassRepositorio, ProdutoClassRepositorio>();
 
+// DOMAIN  MEDIATR
 builder.Services.AddMediatR(Assembly.Load("ProjectDeliv.Domain"));
 builder.Services.AddScoped<INotificationHandler<DomainNotification>, DomainNotificationHandler>();
 builder.Services.AddScoped<IRequestHandler<ProdutoClassInsercaoCommand>, ProdutoClassCommandHandler>();
