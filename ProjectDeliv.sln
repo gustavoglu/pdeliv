@@ -5,11 +5,11 @@ VisualStudioVersion = 17.1.31911.260
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Domain", "1 - Domain", "{E3A33448-5913-4B33-80F2-D7C1B9932B46}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectDeliv.Domain", "src\ProjectDeliv.Domain\ProjectDeliv.Domain.csproj", "{B98621DC-E304-49C7-A71A-6AD8E2493494}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectDeliv.Domain", "src\ProjectDeliv.Domain\ProjectDeliv.Domain.csproj", "{B98621DC-E304-49C7-A71A-6AD8E2493494}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Infra", "2 - Infra", "{F1D52D00-C3A6-47A7-BA2C-FFCA482CF8AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectDeliv.Infra.Data", "src\ProjectDeliv.Infra.Data\ProjectDeliv.Infra.Data.csproj", "{CFD8CFD8-2A8D-4F73-9F35-83B0C3AB0F3F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectDeliv.Infra.Data", "src\ProjectDeliv.Infra.Data\ProjectDeliv.Infra.Data.csproj", "{CFD8CFD8-2A8D-4F73-9F35-83B0C3AB0F3F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Application", "3 - Application", "{184D4A01-67F0-4254-BA9D-E0A72539B96A}"
 EndProject
@@ -17,7 +17,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Services", "4 - Service
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Presentation", "5 - Presentation", "{4EE65F3D-C756-4D5A-9C53-B403513F2009}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectDeliv.Services.Api", "src\ProjectDeliv.Services.Api\ProjectDeliv.Services.Api.csproj", "{2376DBD8-C9A6-404A-BAF5-6164A8275B52}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectDeliv.Services.Api", "src\ProjectDeliv.Services.Api\ProjectDeliv.Services.Api.csproj", "{2376DBD8-C9A6-404A-BAF5-6164A8275B52}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectDeliv.Presentation.Site.Manager", "src\ProjectDeliv.Presentation.Site.Manager\ProjectDeliv.Presentation.Site.Manager.csproj", "{C28C315D-361C-43D3-A098-929EDD68F65C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +39,10 @@ Global
 		{2376DBD8-C9A6-404A-BAF5-6164A8275B52}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2376DBD8-C9A6-404A-BAF5-6164A8275B52}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2376DBD8-C9A6-404A-BAF5-6164A8275B52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C28C315D-361C-43D3-A098-929EDD68F65C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C28C315D-361C-43D3-A098-929EDD68F65C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C28C315D-361C-43D3-A098-929EDD68F65C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C28C315D-361C-43D3-A098-929EDD68F65C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -45,6 +51,7 @@ Global
 		{B98621DC-E304-49C7-A71A-6AD8E2493494} = {E3A33448-5913-4B33-80F2-D7C1B9932B46}
 		{CFD8CFD8-2A8D-4F73-9F35-83B0C3AB0F3F} = {F1D52D00-C3A6-47A7-BA2C-FFCA482CF8AF}
 		{2376DBD8-C9A6-404A-BAF5-6164A8275B52} = {CC6769B3-D785-4730-B321-A421EB6878E8}
+		{C28C315D-361C-43D3-A098-929EDD68F65C} = {4EE65F3D-C756-4D5A-9C53-B403513F2009}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B7B3FB97-FA0F-4E6C-9A8F-6FD6A0635800}
