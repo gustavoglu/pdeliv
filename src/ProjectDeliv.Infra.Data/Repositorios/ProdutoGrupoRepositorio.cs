@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProjectDeliv.Domain.Entidades;
 using ProjectDeliv.Domain.Interfaces;
+using ProjectDeliv.Domain.Util;
 using ProjectDeliv.Infra.Data.Contexts;
 
 namespace ProjectDeliv.Infra.Data.Repositorios
@@ -11,11 +12,14 @@ namespace ProjectDeliv.Infra.Data.Repositorios
         {
         }
 
-        public override List<ProdutoGrupo> ObterTodos()
+        public override Paginacao<ProdutoGrupo> ObterTodos(int pagina, int limite)
         {
-            return this.DbSet.Include(produtoGrupo => produtoGrupo.Configuracoes)
+            var total = Paginar(pagina, limite).LongCount();
+            var data = Paginar(pagina, limite).Include(produtoGrupo => produtoGrupo.Configuracoes)
                 .Include(produtoGrupo => produtoGrupo.ProdutoClass)
                 .ToList();
+
+            return new Paginacao<ProdutoGrupo>(data, limite, pagina, total);
         }
     }
 }

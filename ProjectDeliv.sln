@@ -19,7 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Presentation", "5 - Pre
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectDeliv.Services.Api", "src\ProjectDeliv.Services.Api\ProjectDeliv.Services.Api.csproj", "{2376DBD8-C9A6-404A-BAF5-6164A8275B52}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectDeliv.Presentation.Site.Manager", "src\ProjectDeliv.Presentation.Site.Manager\ProjectDeliv.Presentation.Site.Manager.csproj", "{C28C315D-361C-43D3-A098-929EDD68F65C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectDeliv.Presentation.Site.Manager", "src\ProjectDeliv.Presentation.Site.Manager\ProjectDeliv.Presentation.Site.Manager.csproj", "{C28C315D-361C-43D3-A098-929EDD68F65C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

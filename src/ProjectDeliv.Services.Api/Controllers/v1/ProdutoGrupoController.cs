@@ -18,9 +18,9 @@ namespace ProjectDeliv.Services.Api.Controllers.v1
         }
 
         [HttpGet]
-        public IActionResult ObterTodos()
+        public IActionResult ObterTodos(int pagina, int limite)
         {
-            return Ok(_repositorio.ObterTodos());
+            return Ok(_repositorio.ObterTodos(pagina, limite));
         }
 
         [HttpGet("{id}")]
