@@ -37,15 +37,9 @@ namespace ProjectDeliv.Infra.Data.Repositorios
             return DbSet.Skip((pagina - 1) * limite).Take(limite);
         }
 
-        protected long Contar(IQueryable<TEntidade> query)
-        {
-            return query.LongCount();
-        }
-
-
         public virtual Paginacao<TEntidade> ObterTodos(int pagina, int limite)
         {
-            var total = Contar(DbSet);
+            var total = Contar();
             var data = Paginar(pagina, limite).ToList();
 
             return new Paginacao<TEntidade>(data, limite, pagina, total);
