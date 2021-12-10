@@ -1,0 +1,25 @@
+﻿@using ProjectDeliv.Application.ViewModels.ProdutoClasss
+
+
+<MudForm @ref="Form" @bind-IsValid="@Success" @bind-Errors="@Errors">
+    <MudTextField @bind-Value="Model.Descricao" T="string" Label="Descrição" Required="true" RequiredError="Campo Obrigatório" />
+    <MudTextField @bind-Value="Model.ImagemUrl" T="string" Label="Imagem Url"></MudTextField>
+</MudForm>
+
+
+@code {
+
+    public ProdutoClassFormInsercaoViewModel Model { get; set; }
+
+    public bool Success { get; set; }
+    public string[] Errors { get; set; }
+    public MudForm Form { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Model = new ProdutoClassFormInsercaoViewModel();
+        Errors = new string[] { };
+
+        base.OnInitialized();
+    }
+}

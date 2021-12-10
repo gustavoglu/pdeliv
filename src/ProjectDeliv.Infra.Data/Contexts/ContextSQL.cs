@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using ProjectDeliv.Domain.Entidades;
+using ProjectDeliv.Domain.EventSourcing;
 using ProjectDeliv.Infra.Data.Mapping;
 using System.Linq;
 
@@ -8,6 +9,7 @@ namespace ProjectDeliv.Infra.Data.Contexts
 {
     public class ContextSQL : DbContext
     {
+        public DbSet<EventStore> EventStore { get; set; }
         public DbSet<ProdutoGrupo> ProdutoGrupo { get; set; }
         public DbSet<ProdutoGrupoConfig> ProdutoGrupoConfig { get; set; }
         public DbSet<ProdutoGrupoConfigOpcao> ProdutoGrupoConfigOpcao { get; set; }
@@ -22,6 +24,7 @@ namespace ProjectDeliv.Infra.Data.Contexts
             modelBuilder.ApplyConfiguration(new ProdutoGrupoConfigMap());
             modelBuilder.ApplyConfiguration(new ProdutoGrupoConfigOpcaoMap());
             modelBuilder.ApplyConfiguration(new ProdutoClassMap());
+            modelBuilder.ApplyConfiguration(new EventStoreMap());
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

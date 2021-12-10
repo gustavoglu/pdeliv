@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectDeliv.Services.Api",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectDeliv.Presentation.Site.Manager", "src\ProjectDeliv.Presentation.Site.Manager\ProjectDeliv.Presentation.Site.Manager.csproj", "{C28C315D-361C-43D3-A098-929EDD68F65C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectDeliv.Application", "src\ProjectDeliv.Application\ProjectDeliv.Application.csproj", "{02FA72E3-7E3A-4B85-BC8D-BEFF9E42F23B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{C28C315D-361C-43D3-A098-929EDD68F65C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C28C315D-361C-43D3-A098-929EDD68F65C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C28C315D-361C-43D3-A098-929EDD68F65C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02FA72E3-7E3A-4B85-BC8D-BEFF9E42F23B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02FA72E3-7E3A-4B85-BC8D-BEFF9E42F23B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02FA72E3-7E3A-4B85-BC8D-BEFF9E42F23B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02FA72E3-7E3A-4B85-BC8D-BEFF9E42F23B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,6 +58,7 @@ Global
 		{CFD8CFD8-2A8D-4F73-9F35-83B0C3AB0F3F} = {F1D52D00-C3A6-47A7-BA2C-FFCA482CF8AF}
 		{2376DBD8-C9A6-404A-BAF5-6164A8275B52} = {CC6769B3-D785-4730-B321-A421EB6878E8}
 		{C28C315D-361C-43D3-A098-929EDD68F65C} = {4EE65F3D-C756-4D5A-9C53-B403513F2009}
+		{02FA72E3-7E3A-4B85-BC8D-BEFF9E42F23B} = {184D4A01-67F0-4254-BA9D-E0A72539B96A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B7B3FB97-FA0F-4E6C-9A8F-6FD6A0635800}

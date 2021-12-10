@@ -1,10 +1,12 @@
 using MediatR;
 using ProjectDeliv.Domain.CommandHandlers;
 using ProjectDeliv.Domain.Commands.ProdutoClasss;
+using ProjectDeliv.Domain.EventSourcing;
 using ProjectDeliv.Domain.Interfaces;
 using ProjectDeliv.Domain.MapProfiles;
 using ProjectDeliv.Domain.Notifications;
 using ProjectDeliv.Infra.Data.Contexts;
+using ProjectDeliv.Infra.Data.EventSourcing;
 using ProjectDeliv.Infra.Data.Repositorios;
 using ProjectDeliv.Infra.Data.UoW;
 using System.Reflection;
@@ -29,6 +31,7 @@ builder.Services.AddDbContext<ContextSQL>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IProdutoGrupoRepositorio, ProdutoGrupoRepositorio>();
 builder.Services.AddScoped<IProdutoClassRepositorio, ProdutoClassRepositorio>();
+builder.Services.AddScoped<IEventStoreRepositorio, EventStoreRepositorio>();
 
 // DOMAIN  MEDIATR
 builder.Services.AddMediatR(Assembly.Load("ProjectDeliv.Domain"));
